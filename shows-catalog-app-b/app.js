@@ -10,10 +10,11 @@ require("./config/database");
 require("./config/passport")
 
 var indexRouter = require('./routes/index');
-var showsRouter = require('./routes/shows');
-const moviesRouter =require('./routes/movies');
-const profileRouter =require('./routes/profile');
-const trendingRouter =require('./routes/trending');
+var favoritesRouter =require('./routes/favorites')
+// var showsRouter = require('./routes/shows');
+// const moviesRouter =require('./routes/movies');
+// const profileRouter =require('./routes/profile');
+// const trendingRouter =require('./routes/trending');
 
 var app = express();
 
@@ -44,10 +45,11 @@ app.use(function (req, res, next) {
 
 
 app.use('/', indexRouter);
-app.use('/shows', showsRouter);
-app.use('/movies',moviesRouter);
-app.use('/profile',profileRouter);
-app.use('/trending',trendingRouter);
+app.use('/favorites',favoritesRouter)
+// app.use('/shows', showsRouter);
+// app.use('/movies',moviesRouter);
+// app.use('/profile',profileRouter);
+// app.use('/trending',trendingRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
