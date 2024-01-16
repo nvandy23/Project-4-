@@ -3,8 +3,13 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
   {
-    username: { type: String, unique: true },
-    email:String,
+    name: String,
+    googleId: {
+      type: String,
+      required: true
+    },
+    email: String,
+    avatar: String,
     favoriteMovies: [{ type: Schema.Types.ObjectId, ref: 'Movie' }],
     favoriteTVShows: [{ type: Schema.Types.ObjectId, ref: 'TVShow' }],
   },
