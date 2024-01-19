@@ -4,14 +4,13 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema(
   {
     name: String,
-    googleId: {
+    auth0Id: {
       type: String,
-      required: true
+      required: true,
     },
     email: String,
     avatar: String,
-    favoriteMovies: [{ type: Schema.Types.ObjectId, ref: 'Movie' }],
-    favoriteTVShows: [{ type: Schema.Types.ObjectId, ref: 'TVShow' }],
+    favorites: [{ type: Schema.Types.ObjectId, ref: "Favorite" }],
   },
   { timestamps: true }
 );
