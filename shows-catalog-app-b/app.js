@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = (require('express-session'))
 var passport = require('passport');
+const cors = require('cors');
 require("dotenv").config();
 require("./config/database");
 require("./config/passport")
@@ -29,6 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 app.use(session({
   secret: process.env.SECRET,
