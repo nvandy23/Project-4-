@@ -4,7 +4,7 @@ const router = express.Router();
 const Favorite = require('../models/Favorite'); 
 
 
-router.post('/save', async (req, res) => {
+async function save (req,res,next) {
   try {
     const { name, genre, rating, description, userId } = req.body;
 
@@ -15,7 +15,7 @@ router.post('/save', async (req, res) => {
       description,
       user: userId, 
     });
-    
+
     const savedFavorite = await newFavorite.save();
 
     res.status(201).json(savedFavorite);
@@ -23,6 +23,8 @@ router.post('/save', async (req, res) => {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
-});
+};
 
-module.exports = router;
+module.exports = {
+    save
+}

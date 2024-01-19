@@ -9,7 +9,6 @@ require("dotenv").config();
 require("./config/database");
 
 
-var indexRouter = require('./routes/index');
 var favoritesRouter =require('./routes/favorites')
 // var showsRouter = require('./routes/shows');
 // const moviesRouter =require('./routes/movies');
@@ -30,7 +29,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 
-app.use('/', indexRouter);
 app.use('/favorites',favoritesRouter)
 // app.use('/shows', showsRouter);
 // app.use('/movies',moviesRouter);
