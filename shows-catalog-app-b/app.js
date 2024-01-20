@@ -7,6 +7,7 @@ var session = (require('express-session'))
 const cors = require('cors');
 require("dotenv").config();
 require("./config/database");
+const methodOverride = require('method-override');
 
 
 var favoritesRouter =require('./routes/favorites')
@@ -27,6 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
+app.use(methodOverride('_method'));
 
 
 app.use('/favorites',favoritesRouter)

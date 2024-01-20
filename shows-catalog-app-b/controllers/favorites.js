@@ -25,6 +25,29 @@ async function save (req,res,next) {
   }
 };
 
-module.exports = {
-    save
+
+async function getFavoritesByUserId(req, res, next) {
+  try {
+    const userId = req.params.userId;
+    const favorites = await Favorite.find({ user: userId });
+    res.status(200).json(favorites);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 }
+
+async function deleteFavorite (req, res,next) {
+    try {
+      await Favorite.findByIdAndDelete(req.params.favoriteId);
+      res.status(200).end();
+    } catch (error) {
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
+
+module.exports = { 
+    save, 
+    getFavoritesByUserId,
+    deleteFavorite};
+
