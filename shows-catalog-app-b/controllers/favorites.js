@@ -43,10 +43,28 @@ const deleteFavorite = async (req, res, next) => {
   }
 };
 
+const updateFavorite = async (req, res, next) => {
+    try {
+      const { name, genre, rating, description } = req.body;
+      const updatedFavorite = await Favorite.findByIdAndUpdate(
+        req.params.favoriteId,
+        { name, genre, rating, description },
+        { new: true }
+      );
+  
+      res.status(200).json(updatedFavorite);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
+
+
 module.exports = {
   save,
   getFavoritesByUserId,
-  deleteFavorite
+  deleteFavorite,
+  updateFavorite
 };
 
 

@@ -7,7 +7,7 @@ const favoritesCtrl =require("../controllers/favorites")
 router.post("/save", favoritesCtrl.save)
 router.get('/user/:userId', favoritesCtrl.getFavoritesByUserId);
 router.delete('/:favoriteId', favoritesCtrl.deleteFavorite);
-
+router.post('/update/:favoriteId', favoritesCtrl.updateFavorite);
 
 
 module.exports = router;

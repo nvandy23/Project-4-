@@ -5,7 +5,7 @@ const favoritesSchema = new Schema(
   {
     name: { type: String, maxlength: 100 },
     genre: { type: String, enum: ["Action", "Comedy", "Fantasy", "Horror", "Reality", "Documentary", "Crime/Mystery", "Talk", "Animation", "Game", "Biography"] },
-    description: { type: String, maxlength: 200 },
+    description: { type: String, maxlength: 1000 },
     rating: { type: Number, min: 1, max: 10 },
     type: { type: String, enum: ["movie", "tvshow"] }, 
     user: {
